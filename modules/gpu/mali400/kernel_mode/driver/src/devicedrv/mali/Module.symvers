@@ -1,0 +1,6 @@
+0x00000000	mali_set_user_setting	/workspace/share/R40/android6.0/androidM_sdk/lichee/linux-3.10/modules/gpu/mali400/kernel_mode/driver/src/devicedrv/mali/mali	EXPORT_SYMBOL
+0x00000000	mali_perf_set_num_pp_cores	/workspace/share/R40/android6.0/androidM_sdk/lichee/linux-3.10/modules/gpu/mali400/kernel_mode/driver/src/devicedrv/mali/mali	EXPORT_SYMBOL
+0x00000000	mali_dev_resume	/workspace/share/R40/android6.0/androidM_sdk/lichee/linux-3.10/modules/gpu/mali400/kernel_mode/driver/src/devicedrv/mali/mali	EXPORT_SYMBOL
+0x00000000	mali_dev_pause	/workspace/share/R40/android6.0/androidM_sdk/lichee/linux-3.10/modules/gpu/mali400/kernel_mode/driver/src/devicedrv/mali/mali	EXPORT_SYMBOL
+0x00000000	mali_get_user_setting	/workspace/share/R40/android6.0/androidM_sdk/lichee/linux-3.10/modules/gpu/mali400/kernel_mode/driver/src/devicedrv/mali/mali	EXPORT_SYMBOL
+0x00000000	gpu_thermal_cool	/workspace/share/R40/android6.0/androidM_sdk/lichee/linux-3.10/modules/gpu/mali400/kernel_mode/driver/src/devicedrv/mali/mali	EXPORT_SYMBOL

@@ -1,0 +1,643 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+losc_enter_ss       0x4               drivers/soc/allwinner/pm/standby/main.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x00000000                __standby_start = .
+
+.text           0xf0000000     0x4a44
+ drivers/soc/allwinner/pm/standby/main.o(.text.startup)
+ *(.text)
+ .text          0xf0000000      0x414 drivers/soc/allwinner/pm/standby/main.o
+                0xf0000000                standby_main
+ .text          0xf0000414       0x80 drivers/soc/allwinner/pm/standby/common.o
+                0xf0000414                standby_memcpy
+ .text          0xf0000494      0x46c drivers/soc/allwinner/pm/standby/standby_twi.o
+                0xf0000544                standby_twi_init
+                0xf0000590                standby_twi_init_losc
+                0xf00005a8                standby_twi_exit
+                0xf00005dc                twi_byte_rw
+ .text          0xf0000900      0x364 drivers/soc/allwinner/pm/standby/power/axp_power.o
+                0xf0000900                find_info
+                0xf0000954                axp_set_volt
+                0xf0000a4c                axp_get_volt
+                0xf0000af0                axp_get_state
+                0xf0000b84                __twi_byte_update
+                0xf0000bf8                axp_set_state
+ .text          0xf0000c64      0x22c drivers/soc/allwinner/pm/standby/power/axp15_power.o
+                0xf0000c64                axp15_losc_enter_ss
+                0xf0000cb8                axp15_set_volt
+                0xf0000ccc                axp15_get_volt
+                0xf0000cdc                axp15_set_state
+                0xf0000cf0                axp15_get_state
+                0xf0000d00                __axp15_set_wakeup
+                0xf0000de8                axp15_suspend_calc
+ .text          0xf0000e90      0x204 drivers/soc/allwinner/pm/standby/power/axp22_power.o
+                0xf0000e90                axp22_losc_enter_ss
+                0xf0000ee4                axp22_set_volt
+                0xf0000ef8                axp22_get_volt
+                0xf0000f08                axp22_set_state
+                0xf0000f1c                axp22_get_state
+                0xf0000f2c                __axp22_set_wakeup
+                0xf0000f8c                axp22_suspend_calc
+ .text          0xf0001094      0x1f8 drivers/soc/allwinner/pm/standby/power/axp20_power.o
+                0xf0001094                axp20_losc_enter_ss
+                0xf00010e8                axp20_set_volt
+                0xf00010fc                axp20_get_volt
+                0xf000110c                axp20_set_state
+                0xf0001120                axp20_get_state
+                0xf0001130                __axp20_set_wakeup
+                0xf0001184                axp20_suspend_calc
+ .text          0xf000128c      0x628 drivers/soc/allwinner/pm/standby/power/standby_power.o
+                0xf000142c                power_enter_super_calc
+                0xf00015bc                dm_suspend
+                0xf00017f4                dm_resume
+ .text          0xf00018b4      0x538 drivers/soc/allwinner/pm/standby/standby_clock.o
+                0xf00018b4                standby_clk_init
+                0xf00018d0                standby_clk_exit
+                0xf00018d8                standby_clk_core2losc
+                0xf00018f8                standby_clk_core2hosc
+                0xf0001920                standby_clk_core2pll
+                0xf0001948                standby_clk_plldisable
+                0xf0001998                standby_clk_pllenable
+                0xf00019d0                standby_clk_set_keyfield
+                0xf00019ec                standby_clk_unset_keyfield
+                0xf0001a04                standby_clk_hoscdisable
+                0xf0001a44                standby_clk_hoscenable
+                0xf0001a84                standby_clk_ldodisable
+                0xf0001aa0                standby_clk_ldoenable
+                0xf0001abc                standby_clk_setdiv
+                0xf0001b68                standby_clk_getdiv
+                0xf0001c04                standby_clk_set_pll_factor
+                0xf0001c54                standby_clk_get_pll_factor
+                0xf0001ca0                standby_clk_apb2losc
+                0xf0001cc4                standby_clk_apb2hosc
+                0xf0001cec                standby_clk_bus_src_backup
+                0xf0001d10                standby_clk_bus_src_set
+                0xf0001d38                standby_clk_bus_src_restore
+                0xf0001d5c                standby_clk_dramgating
+                0xf0001d80                standby_clk_get_cpu_freq
+ .text          0xf0001dec      0x12c drivers/soc/allwinner/pm/standby/standby_debug.o
+                0xf0001dec                mem_status_init
+                0xf0001df0                mem_status_init_nommu
+                0xf0001df4                mem_status_clear
+                0xf0001e14                mem_status_exit
+                0xf0001e18                save_mem_status
+                0xf0001e40                get_mem_status
+                0xf0001e50                show_mem_status
+                0xf0001e88                save_mem_status_nommu
+                0xf0001ea8                save_cpux_mem_status_nommu
+                0xf0001ec8                save_super_flags
+                0xf0001ef0                save_super_addr
+ .text          0xf0001f18      0x1dc drivers/soc/allwinner/pm/standby/standby_divlib.o
+                0xf0001f18                standby_delay
+                0xf0001f40                standby_delay_cycle
+                0xf0001f4c                Ldiv0
+                0xf0001f5c                __aeabi_uidiv
+                0xf0001ff8                __aeabi_idiv
+                0xf00020c4                __aeabi_uidivmod
+                0xf00020dc                __aeabi_idivmod
+ .text          0xf00020f4       0x64 drivers/soc/allwinner/pm/standby/standby_dram.o
+                0xf00020f4                standby_dram_crc_enable
+                0xf00020fc                standby_dram_crc
+ *fill*         0xf0002158        0x8 00
+ .text          0xf0002160      0x4e0 drivers/soc/allwinner/pm/standby/./../mem_mmu_pc_asm.o
+                0xf0002160                save_sp
+                0xf000216c                save_sp_nommu
+                0xf0002178                restore_sp
+                0xf0002180                get_sp
+                0xf0002190                get_cur_cluster_id
+                0xf00021a0                invalidate_dcache
+                0xf0002234                invalidate_icache
+                0xf000224c                flush_dcache
+                0xf00022e8                flush_icache
+                0xf000230c                disable_cache
+                0xf000232c                disable_dcache
+                0xf0002348                disable_icache
+                0xf0002364                disable_l2cache
+                0xf0002380                enable_cache
+                0xf00023a0                enable_icache
+                0xf00023bc                invalidate_branch_predictor
+                0xf00023d4                disable_program_flow_prediction
+                0xf00023f0                enable_program_flow_prediction
+                0xf000240c                mem_flush_tlb
+                0xf0002430                mem_preload_tlb
+                0xf00024cc                disable_mmu
+                0xf00024f4                enable_mmu
+                0xf0002534                jump_to_suspend
+                0xf0002550                jump_to_resume
+                0xf0002570                jump_to_resume0
+                0xf0002580                jump_to_resume0_nommu
+                0xf00025b0                disable_prefetch
+                0xf00025d0                restore_prefetch
+ .text          0xf0002640       0x58 drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
+                0xf0002640                __mem_div0
+                0xf000264c                raw_lib_udiv
+ .text          0xf0002698      0x2f4 drivers/soc/allwinner/pm/standby/./../mem_clk.o
+                0xf0002698                mem_clk_init
+                0xf00026c8                mem_get_ba
+                0xf00026d8                mem_clk_save
+                0xf0002714                mem_clk_restore
+                0xf0002748                mem_clk_setdiv
+                0xf00027bc                mem_clk_getdiv
+                0xf0002804                mem_clk_set_pll_factor
+                0xf0002858                mem_clk_get_pll_factor
+                0xf00028a0                mem_clk_set_misc
+                0xf00028f0                mem_clk_get_misc
+                0xf0002920                mem_clk_get_cpu_freq
+ .text          0xf000298c      0x25c drivers/soc/allwinner/pm/standby/./../mem_timing.o
+                0xf0002a04                init_perfcounters
+                0xf0002a38                backup_perfcounter
+                0xf0002a54                restore_perfcounter
+                0xf0002a78                get_cyclecount
+                0xf0002a80                reset_counter
+                0xf0002a90                change_runtime_env
+                0xf0002ac4                delay_us
+                0xf0002b4c                delay_ms
+                0xf0002b80                init_event_counter
+                0xf0002bac                set_event_counter
+                0xf0002bcc                get_event_counter
+ .text          0xf0002be8      0x4e0 drivers/soc/allwinner/pm/standby/./../mem_serial.o
+                0xf0002ca8                serial_exit
+                0xf0002cdc                serial_init_nommu
+                0xf0002d7c                serial_puts_nommu
+                0xf0002e2c                serial_gets_nommu
+                0xf0002eb8                serial_init_manager
+                0xf0002ecc                serial_exit_manager
+                0xf0002ee0                serial_init
+                0xf0002f8c                serial_puts
+                0xf000303c                serial_gets
+ .text          0xf00030c8      0x66c drivers/soc/allwinner/pm/standby/./../mem_printk.o
+                0xf000326c                strlen
+                0xf0003298                strcpy
+                0xf00032b4                strncpy
+                0xf00032e0                strcat
+                0xf0003320                strncat
+                0xf00033e4                strcmp
+                0xf0003414                strncmp
+                0xf000348c                printk_nommu
+ .text          0xf0003734     0x11f0 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
+                0xf0003734                dram_udelay
+                0xf000374c                dram_enable_all_master
+                0xf0003764                dram_disable_all_master
+                0xf000377c                bit_delay_compensation_standby
+                0xf0003844                set_master_priority_standby
+                0xf00039f4                auto_cal_timing_standby
+                0xf0003a20                auto_set_timing_para_standby
+                0xf0003b94                ccm_set_pll_ddr1_sscg_standby
+                0xf0003c94                ccm_set_pll_ddr0_sscg_standby
+                0xf0003d8c                ccm_set_pll_ddr0_clk_standby
+                0xf0003e94                ccm_set_pll_ddr1_clk_standby
+                0xf0003f5c                mctl_sys_init_standby
+                0xf00040e4                mctl_com_init_standby
+                0xf000413c                mctl_channel_init_standby
+                0xf0004518                mctl_core_init_standby
+                0xf0004544                init_DRAM_standby
+                0xf00046bc                dram_power_save_process
+                0xf0004918                dram_power_up_process
+ *(.rodata)
+ .rodata        0xf0004924        0xc drivers/soc/allwinner/pm/standby/standby_twi.o
+ .rodata        0xf0004930       0xb8 drivers/soc/allwinner/pm/standby/power/axp15_power.o
+ .rodata        0xf00049e8       0x28 drivers/soc/allwinner/pm/standby/power/axp22_power.o
+ .rodata        0xf0004a10       0x28 drivers/soc/allwinner/pm/standby/power/axp20_power.o
+ .rodata        0xf0004a38        0xc drivers/soc/allwinner/pm/standby/./../mem_serial.o
+
+.rodata.str1.4  0xf0004a44      0x574
+ .rodata.str1.4
+                0xf0004a44       0x3b drivers/soc/allwinner/pm/standby/main.o
+                                 0x3c (size before relaxing)
+ *fill*         0xf0004a7f        0x1 00
+ .rodata.str1.4
+                0xf0004a80       0x77 drivers/soc/allwinner/pm/standby/standby_twi.o
+                                 0x78 (size before relaxing)
+ *fill*         0xf0004af7        0x1 00
+ .rodata.str1.4
+                0xf0004af8       0x55 drivers/soc/allwinner/pm/standby/power/axp15_power.o
+                                 0x58 (size before relaxing)
+ *fill*         0xf0004b4d        0x3 00
+ .rodata.str1.4
+                0xf0004b50       0x4d drivers/soc/allwinner/pm/standby/power/axp22_power.o
+                                 0x94 (size before relaxing)
+ *fill*         0xf0004b9d        0x3 00
+ .rodata.str1.4
+                0xf0004ba0       0x97 drivers/soc/allwinner/pm/standby/power/axp20_power.o
+                                 0x98 (size before relaxing)
+ *fill*         0xf0004c37        0x1 00
+ .rodata.str1.4
+                0xf0004c38      0x1f1 drivers/soc/allwinner/pm/standby/power/standby_power.o
+                                0x1f4 (size before relaxing)
+ *fill*         0xf0004e29        0x3 00
+ .rodata.str1.4
+                0xf0004e2c       0x17 drivers/soc/allwinner/pm/standby/standby_debug.o
+                                 0x18 (size before relaxing)
+ *fill*         0xf0004e43        0x1 00
+ .rodata.str1.4
+                0xf0004e44       0x1f drivers/soc/allwinner/pm/standby/standby_dram.o
+                                 0x20 (size before relaxing)
+ *fill*         0xf0004e63        0x1 00
+ .rodata.str1.4
+                0xf0004e64       0x1a drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
+                                 0x1c (size before relaxing)
+ *fill*         0xf0004e7e        0x2 00
+ .rodata.str1.4
+                0xf0004e80       0x25 drivers/soc/allwinner/pm/standby/./../mem_printk.o
+                                 0x28 (size before relaxing)
+ *fill*         0xf0004ea5        0x3 00
+ .rodata.str1.4
+                0xf0004ea8      0x110 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
+
+.glue_7         0xf0004fb8        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0xf0004fb8        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0xf0004fb8        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0xf0004fb8        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0xf0004fb8        0x0
+ .iplt          0x00000000        0x0 drivers/soc/allwinner/pm/standby/main.o
+
+.text.unlikely  0xf0004fb8      0x268
+ .text.unlikely
+                0xf0004fb8      0x268 drivers/soc/allwinner/pm/standby/./../mem_printk.o
+                0xf0004fb8                printk
+
+.rel.dyn        0xf0005220        0x0
+ .rel.iplt      0x00000000        0x0 drivers/soc/allwinner/pm/standby/main.o
+
+.data           0xf0005220      0x6ac
+ *(.data)
+ .data          0xf0005220        0x0 drivers/soc/allwinner/pm/standby/main.o
+ .data          0xf0005220        0x0 drivers/soc/allwinner/pm/standby/common.o
+ .data          0xf0005220        0x0 drivers/soc/allwinner/pm/standby/standby_twi.o
+ .data          0xf0005220        0x0 drivers/soc/allwinner/pm/standby/power/axp_power.o
+ .data          0xf0005220      0x1f0 drivers/soc/allwinner/pm/standby/power/axp15_power.o
+                0xf0005220                axp15_dev_info
+ .data          0xf0005410      0x37c drivers/soc/allwinner/pm/standby/power/axp22_power.o
+                0xf0005410                axp22_dev_info
+ .data          0xf000578c      0x140 drivers/soc/allwinner/pm/standby/power/axp20_power.o
+                0xf000578c                axp20_dev_info
+ .data          0xf00058cc        0x0 drivers/soc/allwinner/pm/standby/power/standby_power.o
+ .data          0xf00058cc        0x0 drivers/soc/allwinner/pm/standby/standby_clock.o
+ .data          0xf00058cc        0x0 drivers/soc/allwinner/pm/standby/standby_debug.o
+ .data          0xf00058cc        0x0 drivers/soc/allwinner/pm/standby/standby_divlib.o
+ .data          0xf00058cc        0x0 drivers/soc/allwinner/pm/standby/standby_dram.o
+ .data          0xf00058cc        0x0 drivers/soc/allwinner/pm/standby/./../mem_mmu_pc_asm.o
+ .data          0xf00058cc        0x0 drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
+ .data          0xf00058cc        0x0 drivers/soc/allwinner/pm/standby/./../mem_clk.o
+ .data          0xf00058cc        0x0 drivers/soc/allwinner/pm/standby/./../mem_timing.o
+ .data          0xf00058cc        0x0 drivers/soc/allwinner/pm/standby/./../mem_serial.o
+ .data          0xf00058cc        0x0 drivers/soc/allwinner/pm/standby/./../mem_printk.o
+ .data          0xf00058cc        0x0 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
+                0xf00058cc                __bss_start = .
+
+.igot.plt       0xf00058cc        0x0
+ .igot.plt      0x00000000        0x0 drivers/soc/allwinner/pm/standby/main.o
+
+.bss            0xf00058cc      0x678
+ *(.sbss)
+ *(.scommon)
+ *(.bss)
+ .bss           0xf00058cc      0x324 drivers/soc/allwinner/pm/standby/main.o
+ .bss           0xf0005bf0        0x0 drivers/soc/allwinner/pm/standby/common.o
+ .bss           0xf0005bf0        0xc drivers/soc/allwinner/pm/standby/standby_twi.o
+ .bss           0xf0005bfc        0x0 drivers/soc/allwinner/pm/standby/power/axp_power.o
+ .bss           0xf0005bfc        0x2 drivers/soc/allwinner/pm/standby/power/axp15_power.o
+ .bss           0xf0005bfe        0x2 drivers/soc/allwinner/pm/standby/power/axp22_power.o
+ .bss           0xf0005c00        0x2 drivers/soc/allwinner/pm/standby/power/axp20_power.o
+ *fill*         0xf0005c02        0x2 00
+ .bss           0xf0005c04       0x60 drivers/soc/allwinner/pm/standby/power/standby_power.o
+ .bss           0xf0005c64       0x1c drivers/soc/allwinner/pm/standby/standby_clock.o
+ .bss           0xf0005c80        0x0 drivers/soc/allwinner/pm/standby/standby_debug.o
+ .bss           0xf0005c80        0x0 drivers/soc/allwinner/pm/standby/standby_divlib.o
+ .bss           0xf0005c80        0x0 drivers/soc/allwinner/pm/standby/standby_dram.o
+ .bss           0xf0005c80        0x0 drivers/soc/allwinner/pm/standby/./../mem_mmu_pc_asm.o
+ .bss           0xf0005c80        0x0 drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
+ .bss           0xf0005c80        0xc drivers/soc/allwinner/pm/standby/./../mem_clk.o
+ .bss           0xf0005c8c       0x10 drivers/soc/allwinner/pm/standby/./../mem_timing.o
+ .bss           0xf0005c9c       0x14 drivers/soc/allwinner/pm/standby/./../mem_serial.o
+ .bss           0xf0005cb0      0x100 drivers/soc/allwinner/pm/standby/./../mem_printk.o
+ .bss           0xf0005db0      0x190 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
+ *(COMMON)
+ COMMON         0xf0005f40        0x4 drivers/soc/allwinner/pm/standby/main.o
+                0xf0005f40                losc_enter_ss
+                0xf0005f44                __bss_end = .
+                0xf0005f44                __standby_end = .
+LOAD drivers/soc/allwinner/pm/standby/common.o
+LOAD drivers/soc/allwinner/pm/standby/standby_twi.o
+LOAD drivers/soc/allwinner/pm/standby/power/axp_power.o
+LOAD drivers/soc/allwinner/pm/standby/power/axp15_power.o
+LOAD drivers/soc/allwinner/pm/standby/power/axp22_power.o
+LOAD drivers/soc/allwinner/pm/standby/power/axp20_power.o
+LOAD drivers/soc/allwinner/pm/standby/power/standby_power.o
+LOAD drivers/soc/allwinner/pm/standby/standby_clock.o
+LOAD drivers/soc/allwinner/pm/standby/standby_debug.o
+LOAD drivers/soc/allwinner/pm/standby/standby_divlib.o
+LOAD drivers/soc/allwinner/pm/standby/standby_dram.o
+LOAD drivers/soc/allwinner/pm/standby/./../mem_mmu_pc_asm.o
+LOAD drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
+LOAD drivers/soc/allwinner/pm/standby/./../mem_clk.o
+LOAD drivers/soc/allwinner/pm/standby/./../mem_timing.o
+LOAD drivers/soc/allwinner/pm/standby/./../mem_serial.o
+LOAD drivers/soc/allwinner/pm/standby/./../mem_printk.o
+LOAD drivers/soc/allwinner/pm/standby/main.o
+LOAD drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
+OUTPUT(drivers/soc/allwinner/pm/standby/standby.elf elf32-littlearm)
+
+.debug_info     0x00000000     0xe585
+ .debug_info    0x00000000     0x1135 drivers/soc/allwinner/pm/standby/main.o
+ .debug_info    0x00001135      0x55b drivers/soc/allwinner/pm/standby/common.o
+ .debug_info    0x00001690      0x98b drivers/soc/allwinner/pm/standby/standby_twi.o
+ .debug_info    0x0000201b      0x9d5 drivers/soc/allwinner/pm/standby/power/axp_power.o
+ .debug_info    0x000029f0      0xb81 drivers/soc/allwinner/pm/standby/power/axp15_power.o
+ .debug_info    0x00003571      0xb58 drivers/soc/allwinner/pm/standby/power/axp22_power.o
+ .debug_info    0x000040c9      0xb08 drivers/soc/allwinner/pm/standby/power/axp20_power.o
+ .debug_info    0x00004bd1     0x10fd drivers/soc/allwinner/pm/standby/power/standby_power.o
+ .debug_info    0x00005cce     0x1bef drivers/soc/allwinner/pm/standby/standby_clock.o
+ .debug_info    0x000078bd      0x65a drivers/soc/allwinner/pm/standby/standby_debug.o
+ .debug_info    0x00007f17       0x97 drivers/soc/allwinner/pm/standby/standby_divlib.o
+ .debug_info    0x00007fae      0x5c1 drivers/soc/allwinner/pm/standby/standby_dram.o
+ .debug_info    0x0000856f       0x9c drivers/soc/allwinner/pm/standby/./../mem_mmu_pc_asm.o
+ .debug_info    0x0000860b      0x566 drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
+ .debug_info    0x00008b71     0x19c3 drivers/soc/allwinner/pm/standby/./../mem_clk.o
+ .debug_info    0x0000a534      0xb46 drivers/soc/allwinner/pm/standby/./../mem_timing.o
+ .debug_info    0x0000b07a     0x1bc9 drivers/soc/allwinner/pm/standby/./../mem_serial.o
+ .debug_info    0x0000cc43      0xfda drivers/soc/allwinner/pm/standby/./../mem_printk.o
+ .debug_info    0x0000dc1d      0x968 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
+
+.debug_abbrev   0x00000000     0x27d3
+ .debug_abbrev  0x00000000      0x300 drivers/soc/allwinner/pm/standby/main.o
+ .debug_abbrev  0x00000300      0x13d drivers/soc/allwinner/pm/standby/common.o
+ .debug_abbrev  0x0000043d      0x1f9 drivers/soc/allwinner/pm/standby/standby_twi.o
+ .debug_abbrev  0x00000636      0x1fe drivers/soc/allwinner/pm/standby/power/axp_power.o
+ .debug_abbrev  0x00000834      0x24f drivers/soc/allwinner/pm/standby/power/axp15_power.o
+ .debug_abbrev  0x00000a83      0x240 drivers/soc/allwinner/pm/standby/power/axp22_power.o
+ .debug_abbrev  0x00000cc3      0x240 drivers/soc/allwinner/pm/standby/power/axp20_power.o
+ .debug_abbrev  0x00000f03      0x2c7 drivers/soc/allwinner/pm/standby/power/standby_power.o
+ .debug_abbrev  0x000011ca      0x2bd drivers/soc/allwinner/pm/standby/standby_clock.o
+ .debug_abbrev  0x00001487      0x187 drivers/soc/allwinner/pm/standby/standby_debug.o
+ .debug_abbrev  0x0000160e       0x14 drivers/soc/allwinner/pm/standby/standby_divlib.o
+ .debug_abbrev  0x00001622      0x158 drivers/soc/allwinner/pm/standby/standby_dram.o
+ .debug_abbrev  0x0000177a       0x14 drivers/soc/allwinner/pm/standby/./../mem_mmu_pc_asm.o
+ .debug_abbrev  0x0000178e      0x145 drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
+ .debug_abbrev  0x000018d3      0x22c drivers/soc/allwinner/pm/standby/./../mem_clk.o
+ .debug_abbrev  0x00001aff      0x2da drivers/soc/allwinner/pm/standby/./../mem_timing.o
+ .debug_abbrev  0x00001dd9      0x395 drivers/soc/allwinner/pm/standby/./../mem_serial.o
+ .debug_abbrev  0x0000216e      0x354 drivers/soc/allwinner/pm/standby/./../mem_printk.o
+ .debug_abbrev  0x000024c2      0x311 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
+
+.debug_loc      0x00000000     0x477b
+ .debug_loc     0x00000000      0x169 drivers/soc/allwinner/pm/standby/main.o
+ .debug_loc     0x00000169      0x103 drivers/soc/allwinner/pm/standby/common.o
+ .debug_loc     0x0000026c      0x30f drivers/soc/allwinner/pm/standby/standby_twi.o
+ .debug_loc     0x0000057b      0x879 drivers/soc/allwinner/pm/standby/power/axp_power.o
+ .debug_loc     0x00000df4      0x2af drivers/soc/allwinner/pm/standby/power/axp15_power.o
+ .debug_loc     0x000010a3      0x295 drivers/soc/allwinner/pm/standby/power/axp22_power.o
+ .debug_loc     0x00001338      0x295 drivers/soc/allwinner/pm/standby/power/axp20_power.o
+ .debug_loc     0x000015cd      0x830 drivers/soc/allwinner/pm/standby/power/standby_power.o
+ .debug_loc     0x00001dfd      0x25b drivers/soc/allwinner/pm/standby/standby_clock.o
+ .debug_loc     0x00002058      0x118 drivers/soc/allwinner/pm/standby/standby_debug.o
+ .debug_loc     0x00002170       0xc6 drivers/soc/allwinner/pm/standby/standby_dram.o
+ .debug_loc     0x00002236       0xb2 drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
+ .debug_loc     0x000022e8      0x289 drivers/soc/allwinner/pm/standby/./../mem_clk.o
+ .debug_loc     0x00002571      0x45f drivers/soc/allwinner/pm/standby/./../mem_timing.o
+ .debug_loc     0x000029d0      0x474 drivers/soc/allwinner/pm/standby/./../mem_serial.o
+ .debug_loc     0x00002e44      0xb3c drivers/soc/allwinner/pm/standby/./../mem_printk.o
+ .debug_loc     0x00003980      0xdfb drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
+
+.debug_aranges  0x00000000      0x268
+ .debug_aranges
+                0x00000000       0x20 drivers/soc/allwinner/pm/standby/main.o
+ .debug_aranges
+                0x00000020       0x20 drivers/soc/allwinner/pm/standby/common.o
+ .debug_aranges
+                0x00000040       0x20 drivers/soc/allwinner/pm/standby/standby_twi.o
+ .debug_aranges
+                0x00000060       0x20 drivers/soc/allwinner/pm/standby/power/axp_power.o
+ .debug_aranges
+                0x00000080       0x20 drivers/soc/allwinner/pm/standby/power/axp15_power.o
+ .debug_aranges
+                0x000000a0       0x20 drivers/soc/allwinner/pm/standby/power/axp22_power.o
+ .debug_aranges
+                0x000000c0       0x20 drivers/soc/allwinner/pm/standby/power/axp20_power.o
+ .debug_aranges
+                0x000000e0       0x20 drivers/soc/allwinner/pm/standby/power/standby_power.o
+ .debug_aranges
+                0x00000100       0x20 drivers/soc/allwinner/pm/standby/standby_clock.o
+ .debug_aranges
+                0x00000120       0x20 drivers/soc/allwinner/pm/standby/standby_debug.o
+ .debug_aranges
+                0x00000140       0x20 drivers/soc/allwinner/pm/standby/standby_divlib.o
+ .debug_aranges
+                0x00000160       0x20 drivers/soc/allwinner/pm/standby/standby_dram.o
+ .debug_aranges
+                0x00000180       0x20 drivers/soc/allwinner/pm/standby/./../mem_mmu_pc_asm.o
+ .debug_aranges
+                0x000001a0       0x20 drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
+ .debug_aranges
+                0x000001c0       0x20 drivers/soc/allwinner/pm/standby/./../mem_clk.o
+ .debug_aranges
+                0x000001e0       0x20 drivers/soc/allwinner/pm/standby/./../mem_timing.o
+ .debug_aranges
+                0x00000200       0x20 drivers/soc/allwinner/pm/standby/./../mem_serial.o
+ .debug_aranges
+                0x00000220       0x28 drivers/soc/allwinner/pm/standby/./../mem_printk.o
+ .debug_aranges
+                0x00000248       0x20 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
+
+.debug_ranges   0x00000000      0x668
+ .debug_ranges  0x00000000       0xc0 drivers/soc/allwinner/pm/standby/main.o
+ .debug_ranges  0x000000c0      0x120 drivers/soc/allwinner/pm/standby/power/axp_power.o
+ .debug_ranges  0x000001e0       0x30 drivers/soc/allwinner/pm/standby/power/axp15_power.o
+ .debug_ranges  0x00000210       0x30 drivers/soc/allwinner/pm/standby/power/axp22_power.o
+ .debug_ranges  0x00000240       0x30 drivers/soc/allwinner/pm/standby/power/axp20_power.o
+ .debug_ranges  0x00000270      0x138 drivers/soc/allwinner/pm/standby/power/standby_power.o
+ .debug_ranges  0x000003a8      0x198 drivers/soc/allwinner/pm/standby/./../mem_serial.o
+ .debug_ranges  0x00000540       0x18 drivers/soc/allwinner/pm/standby/./../mem_printk.o
+ .debug_ranges  0x00000558      0x110 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
+
+.debug_line     0x00000000     0x3745
+ .debug_line    0x00000000      0x3bd drivers/soc/allwinner/pm/standby/main.o
+ .debug_line    0x000003bd      0x1bf drivers/soc/allwinner/pm/standby/common.o
+ .debug_line    0x0000057c      0x376 drivers/soc/allwinner/pm/standby/standby_twi.o
+ .debug_line    0x000008f2      0x2bf drivers/soc/allwinner/pm/standby/power/axp_power.o
+ .debug_line    0x00000bb1      0x2a2 drivers/soc/allwinner/pm/standby/power/axp15_power.o
+ .debug_line    0x00000e53      0x291 drivers/soc/allwinner/pm/standby/power/axp22_power.o
+ .debug_line    0x000010e4      0x290 drivers/soc/allwinner/pm/standby/power/axp20_power.o
+ .debug_line    0x00001374      0x420 drivers/soc/allwinner/pm/standby/power/standby_power.o
+ .debug_line    0x00001794      0x3da drivers/soc/allwinner/pm/standby/standby_clock.o
+ .debug_line    0x00001b6e      0x1e1 drivers/soc/allwinner/pm/standby/standby_debug.o
+ .debug_line    0x00001d4f       0xb0 drivers/soc/allwinner/pm/standby/standby_divlib.o
+ .debug_line    0x00001dff      0x1b4 drivers/soc/allwinner/pm/standby/standby_dram.o
+ .debug_line    0x00001fb3      0x1a2 drivers/soc/allwinner/pm/standby/./../mem_mmu_pc_asm.o
+ .debug_line    0x00002155      0x1c9 drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
+ .debug_line    0x0000231e      0x2e9 drivers/soc/allwinner/pm/standby/./../mem_clk.o
+ .debug_line    0x00002607      0x2b7 drivers/soc/allwinner/pm/standby/./../mem_timing.o
+ .debug_line    0x000028be      0x381 drivers/soc/allwinner/pm/standby/./../mem_serial.o
+ .debug_line    0x00002c3f      0x572 drivers/soc/allwinner/pm/standby/./../mem_printk.o
+ .debug_line    0x000031b1      0x594 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
+
+.debug_str      0x00000000     0x2d11
+ .debug_str     0x00000000      0xf80 drivers/soc/allwinner/pm/standby/main.o
+                               0x10a9 (size before relaxing)
+ .debug_str     0x00000f80       0x55 drivers/soc/allwinner/pm/standby/common.o
+                                0x397 (size before relaxing)
+ .debug_str     0x00000fd5      0x15d drivers/soc/allwinner/pm/standby/standby_twi.o
+                                0x980 (size before relaxing)
+ .debug_str     0x00001132      0x11d drivers/soc/allwinner/pm/standby/power/axp_power.o
+                                0x4cb (size before relaxing)
+ .debug_str     0x0000124f      0x1e7 drivers/soc/allwinner/pm/standby/power/axp15_power.o
+                                0xadc (size before relaxing)
+ .debug_str     0x00001436      0x20b drivers/soc/allwinner/pm/standby/power/axp22_power.o
+                                0xb2b (size before relaxing)
+ .debug_str     0x00001641      0x145 drivers/soc/allwinner/pm/standby/power/axp20_power.o
+                                0xa65 (size before relaxing)
+ .debug_str     0x00001786      0x173 drivers/soc/allwinner/pm/standby/power/standby_power.o
+                                0xe4c (size before relaxing)
+ .debug_str     0x000018f9      0x999 drivers/soc/allwinner/pm/standby/standby_clock.o
+                               0x1283 (size before relaxing)
+ .debug_str     0x00002292       0xf9 drivers/soc/allwinner/pm/standby/standby_debug.o
+                                0x43c (size before relaxing)
+ .debug_str     0x0000238b       0x6b drivers/soc/allwinner/pm/standby/standby_dram.o
+                                0x3eb (size before relaxing)
+ .debug_str     0x000023f6       0x6d drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
+                                0x3bc (size before relaxing)
+ .debug_str     0x00002463      0x146 drivers/soc/allwinner/pm/standby/./../mem_clk.o
+                               0x10c8 (size before relaxing)
+ .debug_str     0x000025a9      0x229 drivers/soc/allwinner/pm/standby/./../mem_timing.o
+                                0xa2d (size before relaxing)
+ .debug_str     0x000027d2      0x1aa drivers/soc/allwinner/pm/standby/./../mem_serial.o
+                               0x10c8 (size before relaxing)
+ .debug_str     0x0000297c      0x109 drivers/soc/allwinner/pm/standby/./../mem_printk.o
+                                0x92c (size before relaxing)
+ .debug_str     0x00002a85      0x28c drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
+                                0x46e (size before relaxing)
+
+.comment        0x00000000       0x64
+ .comment       0x00000000       0x64 drivers/soc/allwinner/pm/standby/main.o
+                                 0x65 (size before relaxing)
+ .comment       0x00000000       0x65 drivers/soc/allwinner/pm/standby/common.o
+ .comment       0x00000000       0x65 drivers/soc/allwinner/pm/standby/standby_twi.o
+ .comment       0x00000000       0x65 drivers/soc/allwinner/pm/standby/power/axp_power.o
+ .comment       0x00000000       0x65 drivers/soc/allwinner/pm/standby/power/axp15_power.o
+ .comment       0x00000000       0x65 drivers/soc/allwinner/pm/standby/power/axp22_power.o
+ .comment       0x00000000       0x65 drivers/soc/allwinner/pm/standby/power/axp20_power.o
+ .comment       0x00000000       0x65 drivers/soc/allwinner/pm/standby/power/standby_power.o
+ .comment       0x00000000       0x65 drivers/soc/allwinner/pm/standby/standby_clock.o
+ .comment       0x00000000       0x65 drivers/soc/allwinner/pm/standby/standby_debug.o
+ .comment       0x00000000       0x65 drivers/soc/allwinner/pm/standby/standby_dram.o
+ .comment       0x00000000       0x65 drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
+ .comment       0x00000000       0x65 drivers/soc/allwinner/pm/standby/./../mem_clk.o
+ .comment       0x00000000       0x65 drivers/soc/allwinner/pm/standby/./../mem_timing.o
+ .comment       0x00000000       0x65 drivers/soc/allwinner/pm/standby/./../mem_serial.o
+ .comment       0x00000000       0x65 drivers/soc/allwinner/pm/standby/./../mem_printk.o
+ .comment       0x00000000       0x65 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
+
+.note.GNU-stack
+                0x00000000        0x0
+ .note.GNU-stack
+                0x00000000        0x0 drivers/soc/allwinner/pm/standby/main.o
+ .note.GNU-stack
+                0x00000000        0x0 drivers/soc/allwinner/pm/standby/common.o
+ .note.GNU-stack
+                0x00000000        0x0 drivers/soc/allwinner/pm/standby/standby_twi.o
+ .note.GNU-stack
+                0x00000000        0x0 drivers/soc/allwinner/pm/standby/power/axp_power.o
+ .note.GNU-stack
+                0x00000000        0x0 drivers/soc/allwinner/pm/standby/power/axp15_power.o
+ .note.GNU-stack
+                0x00000000        0x0 drivers/soc/allwinner/pm/standby/power/axp22_power.o
+ .note.GNU-stack
+                0x00000000        0x0 drivers/soc/allwinner/pm/standby/power/axp20_power.o
+ .note.GNU-stack
+                0x00000000        0x0 drivers/soc/allwinner/pm/standby/power/standby_power.o
+ .note.GNU-stack
+                0x00000000        0x0 drivers/soc/allwinner/pm/standby/standby_clock.o
+ .note.GNU-stack
+                0x00000000        0x0 drivers/soc/allwinner/pm/standby/standby_debug.o
+ .note.GNU-stack
+                0x00000000        0x0 drivers/soc/allwinner/pm/standby/standby_dram.o
+ .note.GNU-stack
+                0x00000000        0x0 drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
+ .note.GNU-stack
+                0x00000000        0x0 drivers/soc/allwinner/pm/standby/./../mem_clk.o
+ .note.GNU-stack
+                0x00000000        0x0 drivers/soc/allwinner/pm/standby/./../mem_timing.o
+ .note.GNU-stack
+                0x00000000        0x0 drivers/soc/allwinner/pm/standby/./../mem_serial.o
+ .note.GNU-stack
+                0x00000000        0x0 drivers/soc/allwinner/pm/standby/./../mem_printk.o
+ .note.GNU-stack
+                0x00000000        0x0 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
+
+.ARM.attributes
+                0x00000000       0x31
+ .ARM.attributes
+                0x00000000       0x33 drivers/soc/allwinner/pm/standby/main.o
+ .ARM.attributes
+                0x00000033       0x33 drivers/soc/allwinner/pm/standby/common.o
+ .ARM.attributes
+                0x00000066       0x33 drivers/soc/allwinner/pm/standby/standby_twi.o
+ .ARM.attributes
+                0x00000099       0x33 drivers/soc/allwinner/pm/standby/power/axp_power.o
+ .ARM.attributes
+                0x000000cc       0x33 drivers/soc/allwinner/pm/standby/power/axp15_power.o
+ .ARM.attributes
+                0x000000ff       0x33 drivers/soc/allwinner/pm/standby/power/axp22_power.o
+ .ARM.attributes
+                0x00000132       0x33 drivers/soc/allwinner/pm/standby/power/axp20_power.o
+ .ARM.attributes
+                0x00000165       0x33 drivers/soc/allwinner/pm/standby/power/standby_power.o
+ .ARM.attributes
+                0x00000198       0x33 drivers/soc/allwinner/pm/standby/standby_clock.o
+ .ARM.attributes
+                0x000001cb       0x33 drivers/soc/allwinner/pm/standby/standby_debug.o
+ .ARM.attributes
+                0x000001fe       0x21 drivers/soc/allwinner/pm/standby/standby_divlib.o
+ .ARM.attributes
+                0x0000021f       0x33 drivers/soc/allwinner/pm/standby/standby_dram.o
+ .ARM.attributes
+                0x00000252       0x21 drivers/soc/allwinner/pm/standby/./../mem_mmu_pc_asm.o
+ .ARM.attributes
+                0x00000273       0x33 drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
+ .ARM.attributes
+                0x000002a6       0x33 drivers/soc/allwinner/pm/standby/./../mem_clk.o
+ .ARM.attributes
+                0x000002d9       0x33 drivers/soc/allwinner/pm/standby/./../mem_timing.o
+ .ARM.attributes
+                0x0000030c       0x33 drivers/soc/allwinner/pm/standby/./../mem_serial.o
+ .ARM.attributes
+                0x0000033f       0x33 drivers/soc/allwinner/pm/standby/./../mem_printk.o
+ .ARM.attributes
+                0x00000372       0x33 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
+
+.debug_frame    0x00000000      0xd34
+ .debug_frame   0x00000000       0x2c drivers/soc/allwinner/pm/standby/main.o
+ .debug_frame   0x0000002c       0x28 drivers/soc/allwinner/pm/standby/common.o
+ .debug_frame   0x00000054       0x70 drivers/soc/allwinner/pm/standby/standby_twi.o
+ .debug_frame   0x000000c4       0xc4 drivers/soc/allwinner/pm/standby/power/axp_power.o
+ .debug_frame   0x00000188       0xa4 drivers/soc/allwinner/pm/standby/power/axp15_power.o
+ .debug_frame   0x0000022c       0xa8 drivers/soc/allwinner/pm/standby/power/axp22_power.o
+ .debug_frame   0x000002d4       0xa8 drivers/soc/allwinner/pm/standby/power/axp20_power.o
+ .debug_frame   0x0000037c       0xb4 drivers/soc/allwinner/pm/standby/power/standby_power.o
+ .debug_frame   0x00000430      0x1b0 drivers/soc/allwinner/pm/standby/standby_clock.o
+ .debug_frame   0x000005e0       0xe0 drivers/soc/allwinner/pm/standby/standby_debug.o
+ .debug_frame   0x000006c0       0x3c drivers/soc/allwinner/pm/standby/standby_dram.o
+ .debug_frame   0x000006fc       0x30 drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
+ .debug_frame   0x0000072c       0xe4 drivers/soc/allwinner/pm/standby/./../mem_clk.o
+ .debug_frame   0x00000810       0xfc drivers/soc/allwinner/pm/standby/./../mem_timing.o
+ .debug_frame   0x0000090c       0xf4 drivers/soc/allwinner/pm/standby/./../mem_serial.o
+ .debug_frame   0x00000a00      0x150 drivers/soc/allwinner/pm/standby/./../mem_printk.o
+ .debug_frame   0x00000b50      0x1e4 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
