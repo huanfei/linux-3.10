@@ -561,6 +561,12 @@
 			pinctrl-0 = <&twi1_pins_a>;
 			pinctrl-1 = <&twi1_pins_b>;
 			status = "disabled";
+	
+			s35390a: s35390a@30 {
+				compatible = "s35390a";
+				status = "okay";
+				reg = <0x30>;
+			};
 		};
 
 		twi2: twi@0x01c2b400{
@@ -1075,7 +1081,6 @@
 			sunxi-dly-208M  = <1 0 0 0 1>;
 			/*sunxi-dly-104M-ddr  = <1 0 0 0 0>;*/
 			/*sunxi-dly-208M-ddr  = <1 0 0 0 0>;*/
-
 
 			/*status = "okay";*/
 			status = "disabled";

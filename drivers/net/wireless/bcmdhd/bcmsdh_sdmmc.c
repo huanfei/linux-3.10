@@ -71,7 +71,7 @@ int sdio_reset_comm(struct mmc_card *card)
 extern PBCMSDH_SDMMC_INSTANCE gInstance;
 #endif
 #ifdef CUSTOMER_HW_ALLWINNER
-extern int sunxi_mci_check_r1_ready(struct mmc_host* mmc, unsigned ms);
+extern int sunxi_mmc_check_r1_ready(struct mmc_host* mmc, unsigned ms);
 #endif
 
 #define DEFAULT_SDIO_F2_BLKSIZE		512
@@ -887,7 +887,7 @@ sdioh_request_byte(sdioh_info_t *sd, uint rw, uint func, uint regaddr, uint8 *by
 
 #ifdef CUSTOMER_HW_ALLWINNER
 	//AW judge sdio read write timeout, 1s
-	if (sunxi_mci_check_r1_ready(sd->func[func]->card->host, 1000) != 0)
+	if (sunxi_mmc_check_r1_ready(sd->func[func]->card->host, 1000) != 0)
 		printk("%s data timeout.\n", __FUNCTION__);
 #endif
 
@@ -945,7 +945,7 @@ sdioh_request_word(sdioh_info_t *sd, uint cmd_type, uint rw, uint func, uint add
 
 #ifdef CUSTOMER_HW_ALLWINNER
 	//AW judge sdio read write timeout, 1s
-	if (sunxi_mci_check_r1_ready(sd->func[func]->card->host, 1000) != 0)
+	if (sunxi_mmc_check_r1_ready(sd->func[func]->card->host, 1000) != 0)
 		printk("%s data timeout.\n", __FUNCTION__);
 #endif
 
@@ -968,7 +968,7 @@ sdioh_request_word(sdioh_info_t *sd, uint cmd_type, uint rw, uint func, uint add
 
 #ifdef CUSTOMER_HW_ALLWINNER
 				//AW judge sdio read write timeout, 1s
-				if (sunxi_mci_check_r1_ready(sd->func[func]->card->host, 1000) != 0)
+				if (sunxi_mmc_check_r1_ready(sd->func[func]->card->host, 1000) != 0)
 					printk("%s data timeout, SDIO_CCCR_IOABORT.\n", __FUNCTION__);	
 #endif
 				sdio_release_host(sd->func[0]);
@@ -1142,12 +1142,12 @@ sdioh_buffer_tofrom_bus(sdioh_info_t *sd, uint fix_inc, uint write, uint func,
 
 #ifdef CUSTOMER_HW_ALLWINNER
 	//AW judge sdio read write timeout, 1s
-	if (sunxi_mci_check_r1_ready(sd->func[func]->card->host, 1000) != 0)
+	if (sunxi_mmc_check_r1_ready(sd->func[func]->card->host, 1000) != 0)
 		printk("%s data timeout.\n", __FUNCTION__);
 #endif
 
 	sdio_release_host(sd->func[func]);
-
+			
 	if (err_ret)
 		sd_err(("%s: %s FAILED %p, addr=0x%05x, pkt_len=%d, ERR=%d\n", __FUNCTION__,
 		       (write) ? "TX" : "RX", buf, addr, len, err_ret));

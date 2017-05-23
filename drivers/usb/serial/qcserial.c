@@ -27,6 +27,7 @@
 
 static const struct usb_device_id id_table[] = {
 	/* Gobi 1000 devices */
+	{DEVICE_G1K(0x2c7c, 0x0125)},   /* ec20 */
 	{DEVICE_G1K(0x05c6, 0x9211)},	/* Acer Gobi QDL device */
 	{DEVICE_G1K(0x05c6, 0x9212)},	/* Acer Gobi Modem Device */
 	{DEVICE_G1K(0x03f0, 0x1f1d)},	/* HP un2400 Gobi Modem Device */

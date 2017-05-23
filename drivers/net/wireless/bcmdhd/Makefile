@@ -1,4 +1,4 @@
-# bcmdhdn
+# bcmdhd
 # 1. WL_IFACE_COMB_NUM_CHANNELS must be added if Android version is 4.4 with Kernel version 3.0~3.4,
 #    otherwise please remove it.
 
@@ -14,11 +14,11 @@ DHDCFLAGS = -Wall -Wstrict-prototypes -Dlinux -DBCMDRIVER                \
 	-DWL_CFG80211_VSDB_PRIORITIZE_SCAN_REQUEST                            \
 	-DESCAN_RESULT_PATCH -DSUPPORT_PM2_ONLY -DWLTDLS                      \
 	-DDHD_DONOT_FORWARD_BCMEVENT_AS_NETWORK_PKT -DRXFRAME_THREAD          \
-	-DMIRACAST_AMPDU_SIZE=8                                               \
+	-DMIRACAST_AMPDU_SIZE=8                          \
 	-DSDTEST -DBDC -DDHD_BCMEVENTS -DPROP_TXSTATUS_VSDB                   \
 	-DGET_OTP_MAC_ENABLE -DSET_RANDOM_MAC_SOFTAP                          \
-	-DENABLE_INSMOD_NO_FW_LOAD   -DCUSTOMER_HW_ALLWINNER                  \
-	-Idrivers/net/wireless/bcmdhdn -Idrivers/net/wireless/bcmdhdn/include
+	-DENABLE_INSMOD_NO_FW_LOAD                                            \
+	-Idrivers/net/wireless/bcmdhd -Idrivers/net/wireless/bcmdhd/include
 
 DHDOFILES = aiutils.o siutils.o sbutils.o bcmutils.o bcmwifi_channels.o \
 	dhd_linux.o dhd_linux_platdev.o dhd_linux_sched.o dhd_pno.o \
@@ -37,9 +37,9 @@ DHDOFILES += bcmsdh.o bcmsdh_linux.o bcmsdh_sdmmc.o bcmsdh_sdmmc_linux.o \
 
 ifeq ($(CONFIG_BCMDHD_OOB),y)
 DHDCFLAGS += -DOOB_INTR_ONLY -DHW_OOB -DCUSTOMER_OOB
-#ifeq ($(CONFIG_BCMDHD_DISABLE_WOWLAN),y)
+ifeq ($(CONFIG_BCMDHD_DISABLE_WOWLAN),y)
 DHDCFLAGS += -DDISABLE_WOWLAN
-#endif
+endif
 else
 DHDCFLAGS += -DSDIO_ISR_THREAD
 endif
@@ -54,12 +54,12 @@ DHDOFILES += dhd_pcie.o dhd_pcie_linux.o pcie_core.o dhd_flowring.o \
 	dhd_msgbuf.o
 endif
 
-obj-$(CONFIG_BCMDHDN) += bcmdhdn.o
-bcmdhdn-objs += $(DHDOFILES)
+obj-$(CONFIG_BCMDHD) += bcmdhd.o
+bcmdhd-objs += $(DHDOFILES)
 
-#ifeq ($(CONFIG_MACH_ODROID_4210),y)
+#ifeq ($(CONFIG_ARCH_SUNXI),y)
 DHDOFILES += dhd_gpio.o
-DHDCFLAGS += -DCUSTOMER_HW -DDHD_OF_SUPPORT
+DHDCFLAGS += -DCUSTOMER_HW -DDHD_OF_SUPPORT -DCUSTOMER_HW_ALLWINNER
 DHDCFLAGS += -Iarch/arm/mach-sunxi/include
 #DHDCFLAGS += -DBCMWAPI_WPI -DBCMWAPI_WAI
 #endif
@@ -75,12 +75,12 @@ DHDCFLAGS += -DSTATIC_WL_PRIV_STRUCT -DENHANCED_STATIC_BUF
 endif
 
 ifneq ($(CONFIG_WIRELESS_EXT),)
-bcmdhdn-objs += wl_iw.o
+bcmdhd-objs += wl_iw.o
 DHDCFLAGS += -DSOFTAP -DWL_WIRELESS_EXT -DUSE_IW
 endif
 ifneq ($(CONFIG_CFG80211),)
-bcmdhdn-objs += wl_cfg80211.o wl_cfgp2p.o wl_linux_mon.o wl_cfg_btcoex.o
-bcmdhdn-objs += dhd_cfg80211.o dhd_cfg_vendor.o
+bcmdhd-objs += wl_cfg80211.o wl_cfgp2p.o wl_linux_mon.o wl_cfg_btcoex.o
+bcmdhd-objs += dhd_cfg80211.o dhd_cfg_vendor.o
 DHDCFLAGS += -DWL_CFG80211 -DWLP2P -DWL_CFG80211_STA_EVENT -DWL_ENABLE_P2P_IF
 DHDCFLAGS += -DWL_IFACE_COMB_NUM_CHANNELS
 DHDCFLAGS += -DCUSTOM_ROAM_TRIGGER_SETTING=-65
@@ -91,7 +91,7 @@ DHDCFLAGS += -DWL_SUPPORT_AUTO_CHANNEL
 DHDCFLAGS += -DWL_SUPPORT_BACKPORTED_KPATCHES
 endif
 EXTRA_CFLAGS = $(DHDCFLAGS)
-ifeq ($(CONFIG_BCMDHDN),m)
+ifeq ($(CONFIG_BCMDHD),m)
 DHDCFLAGS += -DMULTIPLE_SUPPLICANT
 EXTRA_LDFLAGS += --strip-debug
 else

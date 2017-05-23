@@ -1433,7 +1433,7 @@ static int sw_uart_probe(struct platform_device *pdev)
 
 	sunxi_uart_sysfs(pdev);
 
-	SERIAL_DBG("add uart%d port, port_type %d, uartclk %d\n",
+	printk("add uart%d port, port_type %d, uartclk %d\n",
 			pdev->id, port->type, port->uartclk);
 	return uart_add_one_port(&sw_uart_driver, port);
 }

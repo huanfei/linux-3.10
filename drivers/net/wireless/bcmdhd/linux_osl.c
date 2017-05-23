@@ -11,6 +11,7 @@
 #include <typedefs.h>
 #include <bcmendian.h>
 #include <linuxver.h>
+#include <asm-generic/pci-dma-compat.h> 
 #include <bcmdefs.h>
 
 #if defined(BCM47XX_CA9) && defined(__ARM_ARCH_7A__)
@@ -337,7 +338,7 @@ osl_attach(void *pdev, uint bustype, bool pkttag)
 		osh->cmn = *osl_cmn;
 	}
 	atomic_add(1, &osh->cmn->refcount);
-
+	
 	/* Check that error map has the right number of entries in it */
 	ASSERT(ABS(BCME_LAST) == (ARRAYSIZE(linuxbcmerrormap) - 1));
 
@@ -722,7 +723,7 @@ osl_pktfastget(osl_t *osh, uint len)
 #ifdef CTFPOOL_SPINLOCK
 	unsigned long flags;
 #endif /* CTFPOOL_SPINLOCK */
-
+	
 	/* Try to do fast allocate. Return null if ctfpool is not in use
 	 * or if there are no items in the ctfpool.
 	 */
@@ -743,7 +744,7 @@ osl_pktfastget(osl_t *osh, uint len)
 	}
 
 	ASSERT(len <= osh->ctfpool->obj_size);
-
+	
 	/* Get an object from ctfpool */
 	skb = (struct sk_buff *)osh->ctfpool->head;
 	osh->ctfpool->head = (void *)skb->next;
@@ -1753,7 +1754,7 @@ osl_pktdup(osl_t *osh, void *skb)
 		ctfpool->refills++;
 	}
 #endif /* CTFPOOL */
-
+	
 	/* Clear PKTC  context */
 	PKTSETCLINK(p, NULL);
 	PKTCCLRFLAGS(p);

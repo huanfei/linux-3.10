@@ -280,6 +280,7 @@ static int sunxi_wlan_probe(struct platform_device *pdev)
 		case 0:
 		case 1:
 		case 2:
+		case 3:
 			data->bus_index = val;
 			break;
 		default:

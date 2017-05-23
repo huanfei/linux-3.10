@@ -28,6 +28,26 @@
 			status = "okay";
 		};
 
+		uart3: uart@01c28c00 {
+			interrupts = <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>;           /* uart0 is IRQ33 on fpga */
+			status = "okay";
+		};
+
+		uart4: uart@01c29000 {
+			interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;           /* uart0 is IRQ33 on fpga */
+			status = "okay";
+		};
+
+		uart6: uart@01c29800 {
+			interrupts = <GIC_SPI 19 IRQ_TYPE_LEVEL_HIGH>;           /* uart0 is IRQ33 on fpga */
+			status = "okay";
+		};
+
+		uart7: uart@01c29c00 {
+			interrupts = <GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH>;           /* uart0 is IRQ33 on fpga */
+			status = "okay";
+		};
+
 		twi0: twi@0x01c2ac00 {
 			interrupts = <GIC_SPI 2 IRQ_TYPE_LEVEL_HIGH>;           /* twi0 is IRQ34 on fpga (conflict with gpio) */
 			status = "disabled";
@@ -205,10 +225,6 @@
 					allwinner,muxsel = <2>;
 				};
 
-				uart0_pins_b: uart0@1 {
-					allwinner,pins = "PB22", "PB23";
-					allwinner,muxsel = <7>;
-				};
 		};
 
 		csi0:vfe@0 {
@@ -218,5 +234,13 @@
 		sata:sata@01c18000{
 			interrupts = <GIC_SPI 22 IRQ_TYPE_LEVEL_HIGH>; /* sata is IRQ54 on fpga */
 		};
+
+		wlan:wlan {
+                	compatible = "allwinner,sunxi-wlan";
+                	wlan_busnum = <3>;
+                	wlan_regon = "PH09";
+                	wlan_hostwake = "PH10";
+                	status = "okay";
+        	};
 	};
 };

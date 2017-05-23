@@ -601,6 +601,7 @@ static const struct option_blacklist_info telit_le920_blacklist = {
 };
 
 static const struct usb_device_id option_ids[] = {
+	{ USB_DEVICE(0x2c7c, 0x0125) },
 	{ USB_DEVICE(OPTION_VENDOR_ID, OPTION_PRODUCT_COLT) },
 	{ USB_DEVICE(OPTION_VENDOR_ID, OPTION_PRODUCT_RICOLA) },
 	{ USB_DEVICE(OPTION_VENDOR_ID, OPTION_PRODUCT_RICOLA_LIGHT) },
@@ -1839,7 +1840,14 @@ static int option_probe(struct usb_serial *serial,
 	/* Never bind to the CD-Rom emulation interface	*/
 	if (iface_desc->bInterfaceClass == 0x08)
 		return -ENODEV;
-
+#if 1
+       if (serial->dev->descriptor.idVendor == cpu_to_le16(0x2c7c) && serial->interface->cur_altsetting->desc.bInterfaceNumber>=4 )
+               return -ENODEV;
+       if (serial->dev->descriptor.idVendor == cpu_to_le16(0x2c7c)){
+                 pm_runtime_set_autosuspend_delay(&serial->dev->dev,3000);
+                 usb_enable_autosuspend(serial->dev);
+               }
+#endif
 	/*
 	 * Don't bind reserved interfaces (like network ones) which often have
 	 * the same class/subclass/protocol as the serial interfaces.  Look at

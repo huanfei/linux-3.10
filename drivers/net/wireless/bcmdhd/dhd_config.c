@@ -58,7 +58,6 @@ uint config_msg_level = CONFIG_ERROR_LEVEL;
 #define BCM43241B4_CHIP_REV     5
 #define BCM4335A0_CHIP_REV      2
 #define BCM4339A0_CHIP_REV      1
-#define BCM43455C0_CHIP_REV     6
 #define BCM4354A1_CHIP_REV      1
 #define BCM4356A2_CHIP_REV      2
 
@@ -123,13 +122,6 @@ const static char *bcm4339a0_ag_fw_name[] = {
 	"fw_bcm4339a0_ag_apsta.bin",
 	"fw_bcm4339a0_ag_p2p.bin",
 	"fw_bcm4339a0_ag_mfg.bin"
-};
-
-const static char *bcm43455c0_ag_fw_name[] = {
-	"fw_bcm43455c0_ag.bin",
-	"fw_bcm43455c0_ag_apsta.bin",
-	"fw_bcm43455c0_ag_p2p.bin",
-	"fw_bcm43455c0_ag_mfg.bin"
 };
 
 const static char *bcm4354a1_ag_fw_name[] = {
@@ -482,10 +474,6 @@ dhd_conf_set_fw_name_by_chip(dhd_pub_t *dhd, char *fw_path)
 		case BCM4335_CHIP_ID:
 			if (chiprev == BCM4335A0_CHIP_REV)
 				strcpy(&fw_path[i+1], bcm4339a0_ag_fw_name[fw_type]);
-			break;
-		case BCM4345_CHIP_ID:
-			if (chiprev == BCM43455C0_CHIP_REV)
-				strcpy(&fw_path[i+1], bcm43455c0_ag_fw_name[fw_type]);
 			break;
 		case BCM4339_CHIP_ID:
 			if (chiprev == BCM4339A0_CHIP_REV)
@@ -1118,16 +1106,6 @@ dhd_conf_set_disable_proptx(dhd_pub_t *dhd)
 {	
 	printf("%s: set disable_proptx %d\n", __FUNCTION__, dhd->conf->disable_proptx);
 	disable_proptx = dhd->conf->disable_proptx;
-}
-
-int
-dhd_conf_get_pm(void *context)
-{
-	dhd_pub_t *dhd = context;
-
-	if (dhd && dhd->conf)
-		return dhd->conf->pm;
-	return -1;
 }
 
 unsigned int
@@ -1779,7 +1757,7 @@ dhd_conf_read_config(dhd_pub_t *dhd, char *conf_path)
 			conf->spect = (int)simple_strtol(pick, NULL, 10);
 			printf("%s: spect = %d\n", __FUNCTION__, conf->spect);
 		}
-
+ 
 		/* Process txbf parameters */
 		memset(pick, 0, MAXSZ_BUF);
 		len_val = process_config_vars(bufp, len, pick, "txbf=");
@@ -1844,7 +1822,7 @@ dhd_conf_read_config(dhd_pub_t *dhd, char *conf_path)
 				conf->bus_rxglom = FALSE;
 			else
 				conf->bus_rxglom = TRUE;
-			printf("%s: bus:rxglom = %d\n", __FUNCTION__, conf->bus_rxglom);
+			printf("%s: bus_rxglom = %d\n", __FUNCTION__, conf->bus_rxglom);
 		}
 
 		/* Process deepsleep parameters */
@@ -1856,14 +1834,6 @@ dhd_conf_read_config(dhd_pub_t *dhd, char *conf_path)
 			else
 				conf->deepsleep = FALSE;
 			printf("%s: deepsleep = %d\n", __FUNCTION__, conf->deepsleep);
-		}
-
-		/* Process PM parameters */
-		memset(pick, 0, MAXSZ_BUF);
-		len_val = process_config_vars(bufp, len, pick, "PM=");
-		if (len_val) {
-			conf->pm = (int)simple_strtol(pick, NULL, 10);
-			printf("%s: PM = %d\n", __FUNCTION__, conf->pm);
 		}
 
 		bcmerror = 0;
@@ -1930,7 +1900,7 @@ dhd_conf_preinit(dhd_pub_t *dhd)
 		strcpy(conf->cspec.ccode, "ALL");
 		conf->cspec.rev = 0;
 	} else if (conf->chip == BCM4335_CHIP_ID || conf->chip == BCM4339_CHIP_ID ||
-			conf->chip == BCM4354_CHIP_ID || conf->chip == BCM4356_CHIP_ID) {
+			conf->chip == BCM4354_CHIP_ID) {
 		strcpy(conf->cspec.country_abbrev, "CN");
 		strcpy(conf->cspec.ccode, "CN");
 		conf->cspec.rev = 38;
@@ -1989,19 +1959,11 @@ dhd_conf_preinit(dhd_pub_t *dhd)
 	conf->dpc_cpucore = 0;
 	conf->frameburst = -1;
 	conf->deepsleep = FALSE;
-	conf->pm = -1;
 	if ((conf->chip == BCM43362_CHIP_ID) || (conf->chip == BCM4330_CHIP_ID)) {
 		conf->disable_proptx = 1;
 		conf->use_rxchain = 0;
 	}
-	if (conf->chip == BCM43430_CHIP_ID) {
-		conf->bus_rxglom = FALSE;
-		conf->use_rxchain = 0;
-	}
 	if (conf->chip == BCM4339_CHIP_ID) {
-		conf->txbf = 1;
-	}
-	if (conf->chip == BCM4345_CHIP_ID) {
 		conf->txbf = 1;
 	}
 	if (conf->chip == BCM4354_CHIP_ID) {

@@ -116,10 +116,11 @@ static int s35390a_disable_test_mode(struct s35390a *s35390a)
 	if (s35390a_get_reg(s35390a, S35390A_CMD_STATUS2, buf, sizeof(buf)) < 0)
 		return -EIO;
 
-	if (!(buf[0] & S35390A_FLAG_TEST))
+/*	if (!(buf[0] & S35390A_FLAG_TEST))
 		return 0;
 
-	buf[0] &= ~S35390A_FLAG_TEST;
+	buf[0] &= ~S35390A_FLAG_TEST;*/
+	buf[0] = 0x10;
 	return s35390a_set_reg(s35390a, S35390A_CMD_STATUS2, buf, sizeof(buf));
 }
 
