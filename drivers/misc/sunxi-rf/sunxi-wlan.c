@@ -85,16 +85,21 @@ int sunxi_wlan_get_oob_irq(void)
 	struct platform_device *pdev;
 	int host_oob_irq = 0;
 	if (!wlan_data || !gpio_is_valid(wlan_data->gpio_wlan_hostwake))
+	{
+		printk("wlan errr gpio hostwake\n");
 		return 0;
+	}
 
 	pdev = wlan_data->pdev;
 
 	host_oob_irq = gpio_to_irq(wlan_data->gpio_wlan_hostwake);
 	if (IS_ERR_VALUE(host_oob_irq))
+{
+		printk("wlan err gpio irq\n");
 		dev_err(&pdev->dev,
 			"map gpio [%d] to virq failed, errno = %d\n",
 			wlan_data->gpio_wlan_hostwake, host_oob_irq);
-
+}
 	return host_oob_irq;
 }
 
@@ -104,10 +109,15 @@ int sunxi_wlan_get_oob_irq_flags(void)
 {
 	int oob_irq_flags;
 	if (!wlan_data)
+	{
+		printk("wlan oob flags err\n");
 		return 0;
+	}
 
-	oob_irq_flags = (IRQF_TRIGGER_HIGH | IRQF_SHARED | IRQF_NO_SUSPEND);
-
+//	oob_irq_flags = (IRQF_TRIGGER_HIGH | IRQF_SHARED | IRQF_NO_SUSPEND);
+	oob_irq_flags = IORESOURCE_IRQ | IORESOURCE_IRQ_HIGHLEVEL | IORESOURCE_IRQ_SHAREABLE;
+	
+	printk("oob flags ok\n");
 	return oob_irq_flags;
 }
 

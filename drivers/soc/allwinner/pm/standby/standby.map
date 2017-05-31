@@ -356,7 +356,7 @@ LOAD drivers/soc/allwinner/pm/standby/main.o
 LOAD drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
 OUTPUT(drivers/soc/allwinner/pm/standby/standby.elf elf32-littlearm)
 
-.debug_info     0x00000000     0xe585
+.debug_info     0x00000000     0xe578
  .debug_info    0x00000000     0x1135 drivers/soc/allwinner/pm/standby/main.o
  .debug_info    0x00001135      0x55b drivers/soc/allwinner/pm/standby/common.o
  .debug_info    0x00001690      0x98b drivers/soc/allwinner/pm/standby/standby_twi.o
@@ -369,13 +369,13 @@ OUTPUT(drivers/soc/allwinner/pm/standby/standby.elf elf32-littlearm)
  .debug_info    0x000078bd      0x65a drivers/soc/allwinner/pm/standby/standby_debug.o
  .debug_info    0x00007f17       0x97 drivers/soc/allwinner/pm/standby/standby_divlib.o
  .debug_info    0x00007fae      0x5c1 drivers/soc/allwinner/pm/standby/standby_dram.o
- .debug_info    0x0000856f       0x9c drivers/soc/allwinner/pm/standby/./../mem_mmu_pc_asm.o
- .debug_info    0x0000860b      0x566 drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
- .debug_info    0x00008b71     0x19c3 drivers/soc/allwinner/pm/standby/./../mem_clk.o
- .debug_info    0x0000a534      0xb46 drivers/soc/allwinner/pm/standby/./../mem_timing.o
- .debug_info    0x0000b07a     0x1bc9 drivers/soc/allwinner/pm/standby/./../mem_serial.o
- .debug_info    0x0000cc43      0xfda drivers/soc/allwinner/pm/standby/./../mem_printk.o
- .debug_info    0x0000dc1d      0x968 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
+ .debug_info    0x0000856f       0x8f drivers/soc/allwinner/pm/standby/./../mem_mmu_pc_asm.o
+ .debug_info    0x000085fe      0x566 drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
+ .debug_info    0x00008b64     0x19c3 drivers/soc/allwinner/pm/standby/./../mem_clk.o
+ .debug_info    0x0000a527      0xb46 drivers/soc/allwinner/pm/standby/./../mem_timing.o
+ .debug_info    0x0000b06d     0x1bc9 drivers/soc/allwinner/pm/standby/./../mem_serial.o
+ .debug_info    0x0000cc36      0xfda drivers/soc/allwinner/pm/standby/./../mem_printk.o
+ .debug_info    0x0000dc10      0x968 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
 
 .debug_abbrev   0x00000000     0x27d3
  .debug_abbrev  0x00000000      0x300 drivers/soc/allwinner/pm/standby/main.o
@@ -468,7 +468,7 @@ OUTPUT(drivers/soc/allwinner/pm/standby/standby.elf elf32-littlearm)
  .debug_ranges  0x00000540       0x18 drivers/soc/allwinner/pm/standby/./../mem_printk.o
  .debug_ranges  0x00000558      0x110 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
 
-.debug_line     0x00000000     0x3745
+.debug_line     0x00000000     0x3738
  .debug_line    0x00000000      0x3bd drivers/soc/allwinner/pm/standby/main.o
  .debug_line    0x000003bd      0x1bf drivers/soc/allwinner/pm/standby/common.o
  .debug_line    0x0000057c      0x376 drivers/soc/allwinner/pm/standby/standby_twi.o
@@ -481,13 +481,13 @@ OUTPUT(drivers/soc/allwinner/pm/standby/standby.elf elf32-littlearm)
  .debug_line    0x00001b6e      0x1e1 drivers/soc/allwinner/pm/standby/standby_debug.o
  .debug_line    0x00001d4f       0xb0 drivers/soc/allwinner/pm/standby/standby_divlib.o
  .debug_line    0x00001dff      0x1b4 drivers/soc/allwinner/pm/standby/standby_dram.o
- .debug_line    0x00001fb3      0x1a2 drivers/soc/allwinner/pm/standby/./../mem_mmu_pc_asm.o
- .debug_line    0x00002155      0x1c9 drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
- .debug_line    0x0000231e      0x2e9 drivers/soc/allwinner/pm/standby/./../mem_clk.o
- .debug_line    0x00002607      0x2b7 drivers/soc/allwinner/pm/standby/./../mem_timing.o
- .debug_line    0x000028be      0x381 drivers/soc/allwinner/pm/standby/./../mem_serial.o
- .debug_line    0x00002c3f      0x572 drivers/soc/allwinner/pm/standby/./../mem_printk.o
- .debug_line    0x000031b1      0x594 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
+ .debug_line    0x00001fb3      0x195 drivers/soc/allwinner/pm/standby/./../mem_mmu_pc_asm.o
+ .debug_line    0x00002148      0x1c9 drivers/soc/allwinner/pm/standby/./../mem_divlibc.o
+ .debug_line    0x00002311      0x2e9 drivers/soc/allwinner/pm/standby/./../mem_clk.o
+ .debug_line    0x000025fa      0x2b7 drivers/soc/allwinner/pm/standby/./../mem_timing.o
+ .debug_line    0x000028b1      0x381 drivers/soc/allwinner/pm/standby/./../mem_serial.o
+ .debug_line    0x00002c32      0x572 drivers/soc/allwinner/pm/standby/./../mem_printk.o
+ .debug_line    0x000031a4      0x594 drivers/soc/allwinner/pm/standby/dram/sun8iw11p1/mctl_standby-sun8iw11.o
 
 .debug_str      0x00000000     0x2d11
  .debug_str     0x00000000      0xf80 drivers/soc/allwinner/pm/standby/main.o

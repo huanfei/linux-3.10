@@ -284,7 +284,7 @@ void bcmsdh_oob_intr_set(bcmsdh_info_t *bcmsdh, bool enable)
 
 	if (!bcmsdh)
 		return;
-
+	printk("wlan bcmsdh oob intr set\n");
 	bcmsdh_osinfo = bcmsdh->os_cxt;
 	spin_lock_irqsave(&bcmsdh_osinfo->oob_irq_spinlock, flags);
 	if (bcmsdh_osinfo->oob_irq_enabled != enable) {
@@ -299,6 +299,7 @@ void bcmsdh_oob_intr_set(bcmsdh_info_t *bcmsdh, bool enable)
 
 static irqreturn_t wlan_oob_irq(int irq, void *dev_id)
 {
+	printk("wlan oob irq start\n");
 	bcmsdh_info_t *bcmsdh = (bcmsdh_info_t *)dev_id;
 	bcmsdh_os_info_t *bcmsdh_osinfo = bcmsdh->os_cxt;
 
@@ -334,22 +335,25 @@ int bcmsdh_oob_intr_register(bcmsdh_info_t *bcmsdh, bcmsdh_cb_fn_t oob_irq_handl
 	err = odin_gpio_sms_request_irq(bcmsdh_osinfo->oob_irq_num, wlan_oob_irq,
 		bcmsdh_osinfo->oob_irq_flags, "bcmsdh_sdmmc", bcmsdh);
 #else
-	err = request_irq(bcmsdh_osinfo->oob_irq_num, wlan_oob_irq,
-		bcmsdh_osinfo->oob_irq_flags, "bcmsdh_sdmmc", bcmsdh);
+//	err = request_irq(bcmsdh_osinfo->oob_irq_num, wlan_oob_irq,
+//		bcmsdh_osinfo->oob_irq_flags, "bcmsdh_sdmmc", bcmsdh);
+	err = devm_request_irq(bcmsdh_osinfo->dev, bcmsdh_osinfo->oob_irq_num,
+	    wlan_oob_irq, bcmsdh_osinfo->oob_irq_flags, "bcmsdh_sdmmc", bcmsdh);
 #endif /* defined(CONFIG_ARCH_ODIN) */
 	if (err) {
 		bcmsdh_osinfo->oob_irq_enabled = FALSE;
 		bcmsdh_osinfo->oob_irq_registered = FALSE;
+		bcmsdh_osinfo->oob_irq_wake_enabled = FALSE;
 		SDLX_MSG(("%s: request_irq failed with %d\n", __FUNCTION__, err));
 		return err;
 	}
 
 #if defined(DISABLE_WOWLAN)
-	SDLX_MSG(("%s: disable_irq_wake\n", __FUNCTION__));
-	err = disable_irq_wake(bcmsdh_osinfo->oob_irq_num);
-	if (err)
-		SDLX_MSG(("%s: disable_irq_wake failed with %d\n", __FUNCTION__, err));
-	else
+//	SDLX_MSG(("%s: disable_irq_wake\n", __FUNCTION__));
+//	err = disable_irq_wake(bcmsdh_osinfo->oob_irq_num);
+//	if (err)
+//		SDLX_MSG(("%s: disable_irq_wake failed with %d\n", __FUNCTION__, err));
+//	else
 		bcmsdh_osinfo->oob_irq_wake_enabled = FALSE;
 #else
 	SDLX_MSG(("%s: enable_irq_wake\n", __FUNCTION__));
@@ -382,7 +386,8 @@ void bcmsdh_oob_intr_unregister(bcmsdh_info_t *bcmsdh)
 		disable_irq(bcmsdh_osinfo->oob_irq_num);
 		bcmsdh_osinfo->oob_irq_enabled = FALSE;
 	}
-	free_irq(bcmsdh_osinfo->oob_irq_num, bcmsdh);
+//	free_irq(bcmsdh_osinfo->oob_irq_num, bcmsdh);
+	devm_free_irq(bcmsdh_osinfo->dev, bcmsdh_osinfo->oob_irq_num, bcmsdh);
 	bcmsdh_osinfo->oob_irq_registered = FALSE;
 }
 #endif
