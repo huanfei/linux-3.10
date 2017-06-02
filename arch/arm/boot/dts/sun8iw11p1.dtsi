@@ -877,7 +877,7 @@
 			sunxi,cpudai-controller = <&cpudai>;
 			sunxi,audio-codec = <&codec>;
 			hp_detect_case = <0x00>;
-			/* jack_det_gpio = <&pio PH 12 1 0 1 0>; */
+			/*jack_det_gpio = <&pio PB 2 1 0 1 0>; */
 			/* invert: 0->high is plug_in, 1->high is plug_out */
 			jack_invert = <1>;
 			status = "okay";

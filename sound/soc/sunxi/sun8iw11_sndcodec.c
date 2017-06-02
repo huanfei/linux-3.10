@@ -247,12 +247,13 @@ static int sunxi_card_dev_probe(struct platform_device *pdev)
 	if (!priv)
 		return -ENOMEM;
 
-	priv->jack_gpio = of_get_named_gpio(np,
-				"jack_det_gpio", 0);
+//	priv->jack_gpio = of_get_named_gpio(np,
+//				"jack_det_gpio", 0);
+	priv->jack_gpio = 0;
 	ret = of_property_read_u32(np, "jack_invert", &temp_val);
 	if (ret < 0) {
 		dev_err(&pdev->dev, "jack_invert not setting, default setting 0\n");
-		priv->jack_invert = 0;
+		priv->jack_invert = 1;
 	} else {
 		priv->jack_invert = temp_val;
 	}
